@@ -1,6 +1,8 @@
 // CONFIGURATION
 const counterElement = document.getElementById('counter-container');
 const counterSound = document.getElementById('counter-sound');
+const soundConsentButton = document.getElementById('sound-consent-button');
+
 const target = 100000;
 let count = 0;
 

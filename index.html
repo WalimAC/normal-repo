@@ -19,8 +19,7 @@
         <p>Montez le son. <br>L'école est sur le point de changer.</p>
         <button id="sound-consent-button" onclick="activateSoundAndStart()">Lancer la simulation</button>
     </div>
-    <div id="counter-container">0 €</div>
-    <div id="transition-veil"></div>
+    <div id="counter-container"></div> <div id="transition-veil"></div>
 </div>
 
 
@@ -28,8 +27,12 @@
 
     <canvas id="webgl"></canvas>
 
-    <section class="scroll-track" id="main-scroll-track">
-    </section>
+    <div id="initial-scroll-hint" class="scroll-hint-overlay">
+        <div class="mouse-icon"></div>
+        <p>SCROLLEZ POUR AVANCER</p>
+    </div>
+
+    <section class="scroll-track" id="main-scroll-track"></section>
 
     <div class="screen-overlay-container">
 
@@ -37,7 +40,7 @@
             <div class="pc-screen-content windows-theme">
                 <div class="os-header">Windows 10 - Education Edition</div>
                 <h3>10 Ans d'Habitudes</h3>
-                <p>Depuis une décennie, écoles et universités reposent entièrement sur cet OS.</p>
+                <p>Depuis une décennie, les ordinateurs des écoles et universités reposent entièrement sur cet OS, windows 10.</p>
                 <p>Tout fonctionne. Tout semble stable.</p>
             </div>
         </div>
@@ -45,7 +48,7 @@
         <div class="story-step" id="step-obsolete">
             <div class="pc-screen-content error-theme">
                 <div class="error-box">
-                    <span>⚠️ FIN DE SUPPORT</span>
+                    <span>⚠️ | ALERT - FIN DE SUPPORT</span>
                 </div>
                 <h3>Le Couperet Microsoft</h3>
                 <p>Sortie de Windows 11. Microsoft impose la transition.</p>
@@ -113,6 +116,10 @@
 
 <audio id="counter-sound" loop>
     <source src="assets/sound-counter.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="background-music" loop>
+    <source src="assets/background-music.mp3" type="audio/mpeg">
 </audio>
 
 <script src="script.js"></script>
