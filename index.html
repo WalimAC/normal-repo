@@ -3,52 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compteur Narratif - Lancement avec Consentement Audio (Haptique)</title>
+    <title>NIRD - La Bataille du Numérique</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
-<body>
+<body class="locked-scroll">
 
-<div id="pre-launch-screen">
-    <p id="pre-launch-text">Pour une meilleure expérience, autorisez le son.</p>
-    <button id="sound-consent-button" onclick="activateSoundAndStart()">
-        Activer le son
-    </button>
+<div id="intro-sequence">
+    <div id="pre-launch-screen">
+        <h1>L'Obsolescence Programmée</h1>
+        <p>Montez le son. <br>L'école est sur le point de changer.</p>
+        <button id="sound-consent-button" onclick="activateSoundAndStart()">Lancer la simulation</button>
+    </div>
+    <div id="counter-container">0 €</div>
+    <div id="transition-veil"></div>
 </div>
 
-<div id="counter-container">0 €</div>
 
-<div id="input-question-area">
-    <div id="prompt-bar">
-        <input type="text" id="prompt-input" placeholder="Que feriez-vous de cette argent ?" maxlength="200">
-        <button id="send-button" onclick="handleInput()">→</button>
+<div id="narrative-experience" style="opacity: 0;">
+
+    <canvas id="webgl"></canvas>
+
+    <section class="scroll-track" id="main-scroll-track">
+    </section>
+
+    <div class="screen-overlay-container">
+
+        <div class="story-step" id="step-windows">
+            <div class="pc-screen-content windows-theme">
+                <div class="os-header">Windows 10 - Education Edition</div>
+                <h3>10 Ans d'Habitudes</h3>
+                <p>Depuis une décennie, écoles et universités reposent entièrement sur cet OS.</p>
+                <p>Tout fonctionne. Tout semble stable.</p>
+            </div>
+        </div>
+
+        <div class="story-step" id="step-obsolete">
+            <div class="pc-screen-content error-theme">
+                <div class="error-box">
+                    <span>⚠️ FIN DE SUPPORT</span>
+                </div>
+                <h3>Le Couperet Microsoft</h3>
+                <p>Sortie de Windows 11. Microsoft impose la transition.</p>
+                <p class="blink">VOTRE MATÉRIEL EST JUGÉ OBSOLÈTE.</p>
+                <p>Des milliers de PC fonctionnels bons pour la casse.</p>
+            </div>
+        </div>
+
+        <div class="story-step" id="step-cost">
+            <div class="pc-screen-content cost-theme">
+                <h3>L'Addition Salée</h3>
+                <div class="bill-line">
+                    <span>Mise à niveau PC</span>
+                    <span>500 € / unité</span>
+                </div>
+                <div class="bill-total">
+                    <span>TOTAL (200 PC)</span>
+                    <span class="red-text">100 000 €</span>
+                </div>
+                <p>Argent public gaspillé. Déchets électroniques multipliés.</p>
+            </div>
+        </div>
+
+        <div class="story-step" id="step-fight">
+            <div class="pc-screen-content fight-theme">
+                <h3>Le Goliath Numérique</h3>
+                <p>Cette dépendance aux Big Tech nous étouffe.</p>
+                <p>Mais l'école peut devenir un <strong>Village Résistant</strong>.</p>
+                <div class="combat-animation">
+                    <span class="glitch-text">INITIALISATION RÉSISTANCE...</span>
+                    <br>
+                    <span class="glitch-text" style="color:#4CAF50">INSTALLATION LIBERTÉ...</span>
+                </div>
+            </div>
+        </div>
+
     </div>
-</div>
 
-<div id="transition-circle"></div>
+    <section class="final-section" id="step-linux">
+        <div class="content-wrapper">
+            <h1 class="joyful-title">Le Numérique Libéré</h1>
+            <p>Bienvenue dans l'environnement NIRD.</p>
+            <div class="features-grid">
+                <div class="feature">
+                    <span class="icon">🐧</span>
+                    <h4>Linux & Logiciels Libres</h4>
+                    <p>Performance, Sécurité, 0€ de licence.</p>
+                </div>
+                <div class="feature">
+                    <span class="icon">♻️</span>
+                    <h4>Durabilité</h4>
+                    <p>Vos PC "obsolètes" redeviennent rapides.</p>
+                </div>
+                <div class="feature">
+                    <span class="icon">✊</span>
+                    <h4>Souveraineté</h4>
+                    <p>Reprenez le contrôle de vos données.</p>
+                </div>
+            </div>
+            <a href="#" class="btn-nird">Rejoindre la Démarche NIRD</a>
+        </div>
+    </section>
 
-<div id="page-two">
-    <h1>Destination Atteinte.</h1>
-    <p style="font-size: 1.5em; max-width: 800px; margin-bottom: 40px;">
-        <span style="font-weight: 600; color: #4CAF50;">Votre réponse ouvre un nouveau chapitre.</span>
-    </p>
-
-    <p style="font-size: 1.2em; font-style: italic; color: #8E8E93; margin-bottom: 20px;">
-        **Votre Rêve :** <span id="user-response" style="color: #E5E5E5; font-weight: 500;">...</span>
-    </p>
-
-    <div style="max-width: 700px; line-height: 1.8; padding: 0 20px; background-color: #2c2c2c; border-radius: 12px; padding: 30px;">
-        <p style="font-style: italic; margin: 0;">
-            <span style="font-weight: bold; color: #fff;">Notre Réponse :</span> <span id="ai-answer">...</span>
-        </p>
-    </div>
-    <p style="margin-top: 30px;">
-        <a href="#" style="color: #4CAF50; text-decoration: none; border-bottom: 1px solid #4CAF50; padding-bottom: 2px; font-weight: 500;">Explorer la suite</a>
-    </p>
 </div>
 
 <audio id="counter-sound" loop>
     <source src="assets/sound-counter.mp3" type="audio/mpeg">
-    Votre navigateur ne supporte pas l'élément audio.
 </audio>
 
 <script src="script.js"></script>

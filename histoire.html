@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIRD - L'Alternative Numérique</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<canvas id="webgl"></canvas>
+
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+
+<section class="fullscreen-section" id="hero">
+    <div class="content-wrapper">
+        <h1 class="glitch" data-text="Big Tech Empire">Big Tech Empire</h1>
+        <p class="subtitle">Fin du support Windows 10. L'obsolescence approche.</p>
+        <p class="scroll-indicator">Scroll pour entrer en résistance ↓</p>
+    </div>
+</section>
+
+<section class="fullscreen-section" id="constat">
+    <div class="glass-card warning">
+        <h2>La Dépendance</h2>
+        <p>Les établissements scolaires sont confrontés à un empire numérique.</p>
+        <ul class="danger-list">
+            <li>⚠️ Matériel obsolète fonctionnel</li>
+            <li>⚠️ Licences coûteuses</li>
+            <li>⚠️ Données hors UE</li>
+        </ul>
+    </div>
+</section>
+
+<section id="horizontal-scroll-container">
+    <div class="horizontal-wrapper">
+
+        <div class="card horizontal-card intro-nird">
+            <h2>La Démarche NIRD</h2>
+            <p>Numérique Inclusif, Responsable et Durable.</p>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="card horizontal-card pilier-1">
+            <div class="card-icon">🤝</div>
+            <h3>Inclusion</h3>
+            <p>Accès équitable au numérique, réduction de la fracture numérique pour toutes les familles.</p>
+        </div>
+
+        <div class="card horizontal-card pilier-2">
+            <div class="card-icon">🛡️</div>
+            <h3>Responsabilité</h3>
+            <p>Usage raisonné de technologies souveraines. Respect des données personnelles (RGPD).</p>
+        </div>
+
+        <div class="card horizontal-card pilier-3">
+            <div class="card-icon">🌱</div>
+            <h3>Durabilité</h3>
+            <p>Lutte contre l'obsolescence programmée grâce à <strong>Linux</strong>. Maîtrise des coûts et des déchets.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="fullscreen-section" id="proof">
+    <div class="split-layout">
+        <div class="text-side">
+            <h2>L'Exemple Carnot</h2>
+            <p>Au Lycée Carnot de Bruay-la-Buissière, le changement est réel.</p>
+            <p>Les élèves du club informatique reconditionnent des PC avec <strong>PrimTux</strong>.</p>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span>14</span>
+                    <p>PC Sauvés</p>
+                </div>
+                <div class="stat">
+                    <span>0€</span>
+                    <p>Coût Licence</p>
+                </div>
+            </div>
+        </div>
+        <div class="image-side placeholder-image">
+            <p>[Insérer Photo Classe ici]</p>
+        </div>
+    </div>
+</section>
+
+<section class="fullscreen-section" id="join">
+    <div class="glass-card final">
+        <h2>Rejoignez le Village</h2>
+        <p>La démarche est volontaire, issue du terrain (forge des communs).</p>
+        <div class="cta-group">
+            <a href="#" class="btn-primary">Forum Tchap</a>
+            <a href="#" class="btn-secondary">Télécharger le Kit</a>
+        </div>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
