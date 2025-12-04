@@ -86,7 +86,7 @@ window.activateSoundAndStart = function() {
     startSound();
 
     soundConsentButton.classList.add('sound-active');
-    soundConsentButton.textContent = "Son Activé. Lancement...";
+    soundConsentButton.textContent = "Bonne visite !";
 
     setTimeout(() => {
         preLaunchScreen.style.opacity = '0';
