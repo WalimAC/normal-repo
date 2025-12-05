@@ -45,7 +45,7 @@ Aucune installation complexe (npm/node) n'est requise
 ### Étapes
 1.  **Cloner le dépôt :**
     ```bash
-    git clone [https://github.com/votre-username/nird-2025.git](https://github.com/votre-username/nird-2025.git)
+    git clone [https://github.com/WalimAC/normal-repo.git](https://github.com/WalimAC/normal-repo.git)
     cd nird-2025
     ```
 
