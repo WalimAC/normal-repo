@@ -289,7 +289,6 @@ function displayDureeDeVie() {
                         li.style.opacity = 0;
                         li.style.marginBottom = '15px';
                         ul.appendChild(li);
-
                         gsap.to(li, {
                             opacity: 1,
                             duration: 0.8, // Durée augmentée
