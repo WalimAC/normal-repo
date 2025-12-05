@@ -155,7 +155,7 @@ function displaySouverainete() {
             contentWrapper.innerHTML = '';
 
             const title = document.createElement('h2');
-            title.textContent = "PILIER 1 : LA SOUVERAINETÉ (Garder le contrôle)";
+            title.textContent = "Étapes 1 - INCLUSION & SOUVERAINETÉ";
             title.style.cssText = `
             color: #8BC34A; font-size: 4em; font-weight: 900; text-align: left;
             text-transform: uppercase; margin-bottom: 30px; opacity: 0;
@@ -165,11 +165,11 @@ function displaySouverainete() {
             contentWrapper.appendChild(title);
 
             const actions = [
-                "Le risque : Les données (élèves, profs) hébergées hors de contrôle (GAFAM).",
-                "La solution NIRD : Utiliser des serveurs et services souverains (Forge, Apps.education).",
-                "L'impact : Protection maximale des données personnelles et pédagogiques.",
-                "RÉSULTAT : Le Service Public redevient le seul garant des informations."
-            ];
+                "Identifier un enseignant volontaire comme contact NIRD.",
+                "Sensibiliser l'équipe éducative aux enjeux du numérique inclusif, responsable et durable.",
+                "Se mettre en réseau via Tchap pour partager ressources et retours d'expérience.",
+                "Informer la direction et la collectivité pour soutenir la démarche.",
+            ]
 
             const ul = document.createElement('ul');
             ul.style.cssText = `
@@ -207,7 +207,7 @@ function displayLogicielLibre() {
             contentWrapper.innerHTML = '';
 
             const title = document.createElement('h2');
-            title.textContent = "PILIER 2 : LOGICIELS LIBRES (Coût Zéro)";
+            title.textContent = "Étapes 2 - RESPONSABILITÉ & LOGICIELS LIBRES";
             title.style.cssText = `
             color: #8BC34A; font-size: 4em; font-weight: 900; text-align: left;
             text-transform: uppercase; margin-bottom: 30px; opacity: 0;
@@ -217,10 +217,10 @@ function displayLogicielLibre() {
             contentWrapper.appendChild(title);
 
             const actions = [
-                "Le risque : Être prisonnier des licences et des formats propriétaires (Office, Adobe).",
-                "La solution NIRD : Adopter des alternatives libres (LibreOffice, Audacity, GIMP, etc.).",
-                "L'impact : Économie massive sur les licences logicielles annuelles.",
-                "RÉSULTAT : Le budget informatique est réorienté vers l'innovation et l'humain."
+                "Installer et utiliser des postes Linux (neufs ou reconditionnés).",
+                "Créer un club informatique pour impliquer les élèves dans le reconditionnement.",
+                "Former enseignants et élèves à l'utilisation et à l'appropriation des outils.",
+                "Suivi par la direction et échanges avec la collectivité pour aspects logistiques.",
             ];
 
             const ul = document.createElement('ul');
@@ -259,7 +259,7 @@ function displayDureeDeVie() {
             contentWrapper.innerHTML = '';
 
             const title = document.createElement('h2');
-            title.textContent = "PILIER 3 : LA DURABILITÉ (Lutter contre l'obsolescence)";
+            title.textContent = "Étapes 3 : DURABILITÉ & RECONDITIONNEMENT";
             title.style.cssText = `
             color: #8BC34A; font-size: 4em; font-weight: 900; text-align: left;
             text-transform: uppercase; margin-bottom: 30px; opacity: 0;
@@ -269,10 +269,10 @@ function displayDureeDeVie() {
             contentWrapper.appendChild(title);
 
             const actions = [
-                "Le risque : Fin du support de Windows 10 (ou autre) rendant le matériel obsolète.",
-                "La solution NIRD : Installer Linux (léger et efficace) pour reconditionner les anciens PC.",
-                "L'impact : Augmenter la durée de vie du matériel de 5 à 10 ans.",
-                "RÉSULTAT : Réduction drastique des DEEE (déchets électroniques) et des coûts de rachat."
+                "Intégrer progressivement les postes Linux dans le parc informatique.",
+                "Inscrire la démarche dans le projet d'établissement et instances officielles.",
+                "Valoriser l'expérience auprès de la communauté éducative et de la collectivité.",
+                "Assurer pérennité et cohérence du parc et du réseau éducatif.",
             ];
 
             const ul = document.createElement('ul');
