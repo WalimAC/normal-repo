@@ -476,7 +476,7 @@ function initThreeJS() {
     });
 }
 
-// --- PARTIE 3 : SCROLL NARRATIF (fonctions inchangées) ---
+// --- PARTIE 3 : SCROLL NARRATIF (fonctions inchangées) ----`
 function initScrollTimeline() {
     gsap.registerPlugin(ScrollTrigger);
 
