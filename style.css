@@ -163,7 +163,7 @@ body.locked-scroll { overflow: hidden; }
 .blink { animation: blink 1s infinite; }
 
 .cost-theme { border-color: gold; color: #ddd; }
-.bill-line,.bill-total { display: flex; justify-content: space-between; margin: 10px 0; border-bottom: 1px dashed #555; padding-bottom: 5px; }
+.bill-line, .bill-total { display: flex; justify-content: space-between; margin: 10px 0; border-bottom: 1px dashed #555; padding-bottom: 5px; }
 .bill-total { font-size: 1.5em; border-bottom: none; margin-top: 20px; font-weight: bold; }
 .red-text { color: var(--error-red); }
 
