@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NIRD - La Bataille du Numérique</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@300;600&display=swap"
+          rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+
+
 </head>
 <body class="locked-scroll">
 
@@ -19,7 +23,8 @@
         <p>Montez le son. <br>L'école est sur le point de changer.</p>
         <button id="sound-consent-button" onclick="activateSoundAndStart()">Lancer la simulation</button>
     </div>
-    <div id="counter-container"></div> <div id="transition-veil"></div>
+    <div id="counter-container"></div>
+    <div id="transition-veil"></div>
 </div>
 
 
@@ -40,7 +45,8 @@
             <div class="pc-screen-content windows-theme">
                 <div class="os-header">Windows 10 - Education Edition</div>
                 <h3>10 Ans d'Habitudes</h3>
-                <p>Depuis une décennie, les ordinateurs des écoles et universités reposent entièrement sur cet OS, windows 10.</p>
+                <p>Depuis une décennie, les ordinateurs des écoles et universités reposent entièrement sur cet OS,
+                    windows 10.</p>
                 <p>Tout fonctionne. Tout semble stable.</p>
             </div>
         </div>
@@ -86,33 +92,61 @@
         </div>
 
     </div>
+</div>
 
-    <section class="final-section" id="step-linux">
-        <div class="content-wrapper">
-            <h1 class="joyful-title">Le Numérique Libéré</h1>
-            <p>Bienvenue dans l'environnement NIRD.</p>
-            <div class="features-grid">
-                <div class="feature">
-                    <span class="icon">🐧</span>
-                    <h4>Linux & Logiciels Libres</h4>
-                    <p>Performance, Sécurité, 0€ de licence.</p>
-                </div>
-                <div class="feature">
-                    <span class="icon">♻️</span>
-                    <h4>Durabilité</h4>
-                    <p>Vos PC "obsolètes" redeviennent rapides.</p>
-                </div>
-                <div class="feature">
-                    <span class="icon">✊</span>
-                    <h4>Souveraineté</h4>
-                    <p>Reprenez le contrôle de vos données.</p>
+<section class="final-section" id="step-linux">
+    <div class="content-wrapper">
+    </div>
+</section>
+
+<section id="step-reconditionnement" class="white-bg-section" style="display: none;">
+    <div class="content-wrapper-white">
+
+        <div id="reco-intro">
+            <h1>Passage à Linux : Les avantages de NIRD</h1>
+            <p>Le cœur de la démarche NIRD réside dans la réutilisation. Mais pour réutiliser efficacement, il faut changer d'outil. C'est pourquoi nous passons les anciens PC sous **Linux**.</p>
+            <p>Découvrez pourquoi en glissant les **cartes d'avantages** de Linux sur le tableau comparatif ci-dessous.</p>
+
+            <div id="drag-container">
+                <div class="drag-card" id="card-1">Performances sur Vieux PC</div>
+                <div class="drag-card" id="card-2">Maîtrise Complète des Données</div>
+                <div class="drag-card" id="card-3">Communauté et Support</div>
+                <div class="drag-card" id="card-4">Coût des Licences Nul</div>
+
+                <div id="comparison-table">
+                    <div class="table-column windows">
+                        <h2>Windows</h2>
+                        <div class="drop-target target-windows"></div>
+                        <p class="explanation">L'obsolescence programmée, c'est là que le cycle s'arrête.</p>
+                    </div>
+                    <div class="table-column linux">
+                        <h2>Linux</h2>
+                        <div class="drop-target target-linux"></div>
+                        <p class="explanation">La solution **NIRD** pour une durée de vie prolongée.</p>
+                    </div>
                 </div>
             </div>
-            <a href="/planete.html" class="btn-nird">Rejoindre la Démarche NIRD</a>
         </div>
-    </section>
 
-</div>
+        <div id="reco-mini-game" style="opacity: 0; margin-top: 100px;">
+            <h2>♻️ Le Reconditionnement par les Élèves</h2>
+            <p>La **seconde vie** du matériel est un acte pédagogique. Aide l'élève à installer la distribution Linux sur le PC reconditionné !</p>
+
+            <div id="install-simulation">
+                <div id="progress-bar-container">
+                    <div id="progress-bar-fill"></div>
+                    <p id="install-status">Démarrage de l'installation...</p>
+                </div>
+                <button id="start-install-button">CLIQUEZ pour Installer Linux</button>
+            </div>
+
+            <p id="reco-success" style="font-size: 2em; color: #8BC34A; opacity: 0; margin-top: 30px;">
+                🎉 **BRAVO ! PC RECONDITIONNÉ ET SAUVÉ !**
+            </p>
+        </div>
+
+    </div>
+</section>
 
 <audio id="counter-sound" loop>
     <source src="assets/sound-counter.mp3" type="audio/mpeg">
