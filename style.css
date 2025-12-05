@@ -172,7 +172,7 @@ body.locked-scroll { overflow: hidden; }
 .combat-animation { margin-top: 20px; font-weight: bold; font-size: 1.2em; }
 .glitch-text { animation: glitch 0.3s infinite; display: inline-block; }
 
-/* === FINAL LINUX === */
+/* === FINAL LINUX ===  */
 .final-section {
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     opacity: 0; background: transparent;

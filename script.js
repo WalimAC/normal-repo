@@ -27,15 +27,17 @@ const musicAudio = document.getElementById('background-music');
 let audioUnlocked = false;
 
 // --- DÉMARRAGE DE LA NARRATION FINALE ET ENCHAÎNEMENT DES PILIERS ---
-const NIRD_NARRATIVE = `C'est précisément l'ambition de la démarche NIRD. Notre objectif est de libérer l'école de la dépendance numérique. En adoptant les logiciels libres et en valorisant le matériel existant, nous transformons l'obsolescence en durabilité. Cela permet d'économiser des milliers d'euros d'argent public tout en réduisant drastiquement l'empreinte environnementale des établissements. NIRD n'est pas qu'un logiciel, c'est un mouvement.`;
+
+// 1. NARRATION RACCOURCIE ET PLUS PERCUTANTE
+const NIRD_NARRATIVE = `Notre ambition : libérer l'école de la dépendance numérique. En adoptant les logiciels libres et en valorisant le matériel existant, nous transformons l'obsolescence en durabilité. Cela permet d'économiser des milliers d'euros d'argent public et de réduire drastiquement l'empreinte environnementale. NIRD n'est pas qu'un logiciel, c'est un mouvement.`;
 
 function startTypingNarrative() {
     const finalSection = document.getElementById('step-linux');
     const contentWrapper = finalSection.querySelector('.content-wrapper');
 
     contentWrapper.style.cssText = `
-        align-items: flex-start; 
-        max-width: 90%; 
+        align-items: flex-start;
+        max-width: 90%;
         padding-left: 5%;
         margin: 0;
     `;
@@ -47,22 +49,22 @@ function startTypingNarrative() {
         titleElement.id = 'final-big-title';
         titleElement.textContent = "C'est précisément l'ambition de la démarche NIRD.";
         titleElement.style.cssText = `
-            color: white; 
-            font-size: 6em; 
-            font-weight: 900; 
-            text-align: left; 
-            text-transform: uppercase; 
-            opacity: 0; 
+            color: white;
+            font-size: 6em;
+            font-weight: 900;
+            text-align: left;
+            text-transform: uppercase;
+            opacity: 0;
             margin-bottom: 50px;
-            font-family: 'Space Grotesk', 'monospace', sans-serif; 
-            text-shadow: 0 0 10px rgba(139, 195, 74, 0.8); 
+            font-family: 'Space Grotesk', 'monospace', sans-serif;
+            text-shadow: 0 0 10px rgba(139, 195, 74, 0.8);
             line-height: 1;
         `;
         contentWrapper.appendChild(titleElement);
     }
 
     // 2. ANIMER LE TITRE AVANT LA NARRATION
-    gsap.to(titleElement, { opacity: 1, duration: 1, ease: "power2.out", onComplete: () => {
+    gsap.to(titleElement, { opacity: 1, duration: 1.5, ease: "power2.out", onComplete: () => { // Durée augmentée
 
             // 3. INSÉRER LE CONTENEUR DE LA NARRATION
             let narrativeContainer = contentWrapper.querySelector('#narrative-text');
@@ -70,33 +72,55 @@ function startTypingNarrative() {
                 narrativeContainer = document.createElement('p');
                 narrativeContainer.id = 'narrative-text';
                 narrativeContainer.style.cssText = `
-                font-size: 1.8em; 
-                max-width: 900px; 
-                text-align: left; 
-                color: white; 
+                font-size: 1.8em;
+                max-width: 900px;
+                text-align: left;
+                color: white;
                 opacity: 0;
-                font-family: 'monospace', 'Courier New', monospace; 
-                border-right: 2px solid white; 
-                padding-right: 5px; 
-                text-shadow: 0 0 5px rgba(139, 195, 74, 0.5); 
-                text-transform: uppercase; 
+                font-family: 'monospace', 'Courier New', monospace;
+                border-right: 2px solid white;
+                padding-right: 5px;
+                text-shadow: 0 0 5px rgba(139, 195, 74, 0.5);
+                text-transform: uppercase;
             `;
                 contentWrapper.appendChild(narrativeContainer);
             }
 
             // 4. DÉMARRER LA NARRATION AVEC EFFET MACHINE À ÉCRIRE
-            gsap.to(narrativeContainer, { opacity: 1, duration: 0.5, onComplete: () => {
+            gsap.to(narrativeContainer, { opacity: 1, duration: 0.8, onComplete: () => { // Durée augmentée
                     let cursor = { char: 0 };
                     let lastCharCount = 0;
-                    narrativeContainer.textContent = "";
+                    narrativeContainer.innerHTML = ""; // Utiliser innerHTML pour les spans
+
+                    // Mots clés à colorer en vert pour l'illustration narrative
+                    const keywords = [
+                        { text: "LIBÉRER L'ÉCOLE", color: '#8BC34A' },
+                        { text: "LOGICIELS LIBRES", color: '#8BC34A' },
+                        { text: "DURABILITÉ", color: '#8BC34A' },
+                        { text: "ÉCONOMISER DES MILLIERS D'EUROS", color: '#8BC34A' },
+                        { text: "MOUVEMENT", color: '#8BC34A' },
+                    ];
+
+                    const textUpperCase = NIRD_NARRATIVE.toUpperCase();
 
                     gsap.to(cursor, {
-                        char: NIRD_NARRATIVE.length,
-                        duration: 12,
+                        char: textUpperCase.length,
+                        // 2. DURATION AUGMENTÉE (ex: de 12 à 20) pour une lecture plus lente
+                        duration: 20,
                         ease: "none",
                         onUpdate: () => {
-                            const currentText = NIRD_NARRATIVE.substring(0, Math.round(cursor.char));
-                            narrativeContainer.textContent = currentText.toUpperCase();
+                            let currentText = textUpperCase.substring(0, Math.round(cursor.char));
+
+                            // 3. APPLICATION DE L'ILLUSTRATION NARRATIVE (changement de couleur)
+                            keywords.forEach(kw => {
+                                const kwUpper = kw.text;
+                                if (currentText.includes(kwUpper)) {
+                                    // Remplacer le mot clé écrit par sa version colorée
+                                    currentText = currentText.replace(kwUpper, `<span style="color: ${kw.color}; text-shadow: 0 0 10px rgba(139, 195, 74, 0.8);">${kwUpper}</span>`);
+                                }
+                            });
+
+                            narrativeContainer.innerHTML = currentText; // Utiliser innerHTML
 
                             if (Math.round(cursor.char) > lastCharCount && typingSound) {
                                 const clone = typingSound.cloneNode();
@@ -106,10 +130,17 @@ function startTypingNarrative() {
                             lastCharCount = Math.round(cursor.char);
                         },
                         onComplete: () => {
-                            narrativeContainer.textContent = NIRD_NARRATIVE.toUpperCase();
+                            // Rendu final avec tous les mots clés colorés
+                            let finalHtml = textUpperCase;
+                            keywords.forEach(kw => {
+                                const kwUpper = kw.text;
+                                finalHtml = finalHtml.replace(kwUpper, `<span style="color: ${kw.color}; text-shadow: 0 0 10px rgba(139, 195, 74, 0.8);">${kwUpper}</span>`);
+                            });
+
+                            narrativeContainer.innerHTML = finalHtml;
                             narrativeContainer.style.borderRight = 'none';
 
-                            setTimeout(displaySouverainete, 1500);
+                            setTimeout(displaySouverainete, 2000); // 4. Délai ajusté après la fin de l'écriture
                         }
                     });
                 }});
@@ -120,7 +151,7 @@ function displaySouverainete() {
     const finalSection = document.getElementById('step-linux');
     const contentWrapper = finalSection.querySelector('.content-wrapper');
 
-    gsap.to(contentWrapper.children, { opacity: 0, duration: 0.5, onComplete: () => {
+    gsap.to(contentWrapper.children, { opacity: 0, duration: 1, onComplete: () => { // Durée augmentée pour l'enchaînement
             contentWrapper.innerHTML = '';
 
             const title = document.createElement('h2');
@@ -157,10 +188,10 @@ function displaySouverainete() {
 
                         gsap.to(li, {
                             opacity: 1,
-                            duration: 0.5,
-                            delay: index * 0.4,
+                            duration: 0.8, // Durée augmentée
+                            delay: index * 0.6, // Délai augmenté
                             onComplete: (index === actions.length - 1) ? () => {
-                                setTimeout(displayLogicielLibre, 2500);
+                                setTimeout(displayLogicielLibre, 3000); // Délai augmenté
                             } : null
                         });
                     });
@@ -172,7 +203,7 @@ function displayLogicielLibre() {
     const finalSection = document.getElementById('step-linux');
     const contentWrapper = finalSection.querySelector('.content-wrapper');
 
-    gsap.to(contentWrapper.children, { opacity: 0, duration: 0.5, onComplete: () => {
+    gsap.to(contentWrapper.children, { opacity: 0, duration: 1, onComplete: () => { // Durée augmentée
             contentWrapper.innerHTML = '';
 
             const title = document.createElement('h2');
@@ -209,10 +240,10 @@ function displayLogicielLibre() {
 
                         gsap.to(li, {
                             opacity: 1,
-                            duration: 0.5,
-                            delay: index * 0.4,
+                            duration: 0.8, // Durée augmentée
+                            delay: index * 0.6, // Délai augmenté
                             onComplete: (index === actions.length - 1) ? () => {
-                                setTimeout(displayDureeDeVie, 2500);
+                                setTimeout(displayDureeDeVie, 3000); // Délai augmenté
                             } : null
                         });
                     });
@@ -224,7 +255,7 @@ function displayDureeDeVie() {
     const finalSection = document.getElementById('step-linux');
     const contentWrapper = finalSection.querySelector('.content-wrapper');
 
-    gsap.to(contentWrapper.children, { opacity: 0, duration: 0.5, onComplete: () => {
+    gsap.to(contentWrapper.children, { opacity: 0, duration: 1, onComplete: () => { // Durée augmentée
             contentWrapper.innerHTML = '';
 
             const title = document.createElement('h2');
@@ -261,16 +292,16 @@ function displayDureeDeVie() {
 
                         gsap.to(li, {
                             opacity: 1,
-                            duration: 0.5,
-                            delay: index * 0.4,
+                            duration: 0.8, // Durée augmentée
+                            delay: index * 0.6, // Délai augmenté
                             onComplete: (index === actions.length - 1) ? () => {
                                 const lastSection = document.getElementById('step-linux');
-                                gsap.to(lastSection, { opacity: 0, duration: 1, onComplete: () => {
+                                gsap.to(lastSection, { opacity: 0, duration: 1.5, onComplete: () => { // Durée augmentée
                                         lastSection.style.display = 'none';
 
                                         const recoSection = document.getElementById('step-reconditionnement');
                                         recoSection.style.display = 'flex';
-                                        gsap.to(recoSection, { opacity: 1, duration: 1, onComplete: () => {
+                                        gsap.to(recoSection, { opacity: 1, duration: 1.5, onComplete: () => { // Durée augmentée
                                                 initRecoInteractions();
                                             }});
                                     }});
@@ -280,8 +311,6 @@ function displayDureeDeVie() {
                 }});
         }});
 }
-
-
 // --- PARTIE 1 : COMPTEUR (fonctions inchangées) ---
 function formatNumber(num) {
     return num.toLocaleString('fr-FR') + ' €';
