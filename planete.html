@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIRD - La Constellation</title>
+    <link rel="stylesheet" href="style.css.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body style="background-color: #020205; overflow: hidden;">
+
+<canvas id="webgl-planet"></canvas>
+
+<div id="school-tooltip">Lycée Carnot</div>
+
+<a href="index.html" class="back-link">← Retour à la simulation</a>
+
+<section id="school-details">
+    <button class="close-btn" onclick="closeSchoolDetails()">×</button>
+    <div class="details-content">
+        <div class="school-header">
+            <img src="assets/nird-logo.png" alt="NIRD" class="mini-logo">
+            <h2 id="detail-title">Nom du Lycée</h2>
+        </div>
+        <p class="school-location" id="detail-location">Ville</p>
+        <hr>
+        <div class="school-stats">
+            <div class="stat-box">
+                <span class="stat-val">Pilote</span>
+                <span class="stat-label">Statut</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-val">Linux</span>
+                <span class="stat-label">OS</span>
+            </div>
+        </div>
+        <p class="school-desc">
+            Cet établissement fait partie des pionniers de la démarche NIRD.
+            En adoptant le libre, ils reconditionnent leur parc et forment les citoyens de demain.
+        </p>
+        <a href="https://nuitdelinfo.com" target="_blank" class="btn-nird-small">Voir la fiche</a>
+    </div>
+</section>
+
+<script src="planete.js"></script>
+</body>
+</html>
