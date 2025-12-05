@@ -722,3 +722,39 @@ function setupInstallSimulation() {
         });
     };
 }
+
+// --- GESTION DES CARTES INTERACTIVES (APPLE STYLE) ---
+window.toggleCard = function(card) {
+    // Si la carte est déjà ouverte, on la ferme
+    if (card.classList.contains('active')) {
+        card.classList.remove('active');
+        return;
+    }
+
+    // Sinon, on ferme toutes les autres avant d'ouvrir celle-ci (Effet Accordéon)
+    document.querySelectorAll('.feature-card').forEach(c => c.classList.remove('active'));
+
+    // On ouvre la carte cliquée
+    card.classList.add('active');
+}
+
+// --- GESTION DU FLOU AU SCROLL (BLUR) ---
+// On écoute le scroll pour flouter le WebGL quand on arrive en bas
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const documentHeight = document.body.scrollHeight - window.innerHeight;
+
+    // On calcule un pourcentage de fin de page (ex: les derniers 500px)
+    const triggerDistance = 800; // Commence à flouter 800px avant la fin
+    const distanceToBottom = documentHeight - scrollY;
+
+    const canvas = document.querySelector('#webgl');
+
+    if (distanceToBottom < triggerDistance) {
+        // Calcule le flou de 0px à 10px en fonction de la proximité du bas
+        const blurAmount = Math.max(0, 10 - (distanceToBottom / triggerDistance) * 10);
+        canvas.style.filter = `blur(${blurAmount}px)`;
+    } else {
+        canvas.style.filter = 'blur(0px)';
+    }
+});
